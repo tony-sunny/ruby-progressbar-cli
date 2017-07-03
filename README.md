@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/ruby-progressbar-cli.svg)](https://badge.fury.io/rb/ruby-progressbar-cli)
+
 # Progress Bar
 ## Installation
 Install from rubygems.org
