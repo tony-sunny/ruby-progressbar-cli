@@ -1,15 +1,17 @@
 require_relative 'string_format'
 
 class ProgressBar
+  using StringFormat
 
   attr_reader :percentage
 
-  def initialize(title: "Progress", count: 100)
+  def initialize(title: "Progress", count: 100, show_time: true)
     @start_time = Time.now
     @percentage = 0
     @initial_string = "\u2591" * 50
     @title = title
     @count = count
+    @show_time = show_time
   end
 
   def percentage=(value)
@@ -27,7 +29,7 @@ class ProgressBar
     progress = "\u2588" * normalized_percentage
     remaining = @initial_string[normalized_percentage..49]
     print "\r#{@title}: #{progress.green}#{remaining} #{rounded_percentage.to_i}%"
-    puts "\nCompleted in #{time_taken}" if rounded_percentage == 100
+    puts "\nCompleted in #{time_taken}" if @show_time && rounded_percentage == 100
   end
 
   private
